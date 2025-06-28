@@ -60,11 +60,7 @@ module Instruction_Memory(clk, rst, MemWrite, A, WD, RD);
 
     // Initialize memory with some test instructions
     initial begin
-        // Sample RISC-V instructions for testing
-       // Memory[0] = 32'h00000013;  // addi x0, x0, 0 (NOP)
-        //Memory[1] = 32'h00100093;  // addi x1, x0, 1
-        //Memory[2] = 32'h00200113;  // addi x2, x0, 2
-        //Memory[3] = 32'h002081b3;  // add x3, x1, x2
+        
         for (i = 4; i < 1024; i = i + 1)
             Memory[i] = 32'h00000013; // Fill rest with NOPs
     end
@@ -288,7 +284,7 @@ module Instr_Decoder(
         case (op)
             7'b0000011: ImmSrc = 2'b00; // lw - I-type
             7'b0100011: ImmSrc = 2'b01; // sw - S-type
-            7'b0110011: ImmSrc = 2'b00; // R-type (don't care)
+            7'b0110011: ImmSrc = 2'b00; // R-type 
             7'b1100011: ImmSrc = 2'b10; // beq - B-type
             7'b0010011: ImmSrc = 2'b00; // addi - I-type
             7'b1101111: ImmSrc = 2'b11; // jal - J-type
