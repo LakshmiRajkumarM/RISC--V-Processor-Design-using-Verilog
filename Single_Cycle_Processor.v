@@ -43,9 +43,9 @@ endmodule
 module Instruction_Memory(clk, rst, A, RD);
     input clk, rst;
     input [31:0] A;
-    output [31:0] RD;  // Changed to wire output
+    output [31:0] RD;  
 
-    reg [31:0] Inst_mem[0:1023];  // Increased memory size
+    reg [31:0] Inst_mem[0:1023];  
     integer i;
 
     // Initialize memory on reset
@@ -87,9 +87,9 @@ endmodule
 module Data_Memory(clk, rst, WE, A, WD, RD);
     input clk, rst, WE;
     input [31:0] A, WD;
-    output [31:0] RD;  // Changed to wire output
+    output [31:0] RD;  
 
-    reg [31:0] Reg[0:1023];  // Increased memory size
+    reg [31:0] Reg[0:1023];  
     integer k;
 
     always @(posedge clk or posedge rst) begin
@@ -97,7 +97,7 @@ module Data_Memory(clk, rst, WE, A, WD, RD);
             for (k = 0; k < 1024; k = k + 1)
                 Reg[k] <= 32'b0;
         end else if (WE)
-            Reg[A[11:2]] <= WD;  // Word-aligned addressing
+            Reg[A[11:2]] <= WD;  
     end
 
     // Combinational read
